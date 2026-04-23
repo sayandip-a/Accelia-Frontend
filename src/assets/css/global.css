@@ -1,0 +1,237 @@
+/* ================================================
+   Accelia Clinical Solutions — Global Styles
+   ================================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.fu  { animation: fadeUp 0.6s ease both; }
+.fu2 { animation: fadeUp 0.6s 0.15s ease both; }
+.fu3 { animation: fadeUp 0.6s 0.30s ease both; }
+.fu4 { animation: fadeUp 0.6s 0.45s ease both; }
+
+/* ── Section Base ── */
+section {
+  padding: var(--section-pad);
+}
+
+.sec-tag {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.sec-tag--gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.13;
+  margin-bottom: 14px;
+}
+
+.sec-title--white { color: var(--white); }
+
+.sec-sub {
+  color: var(--gray);
+  font-size: 17px;
+  line-height: 1.72;
+  max-width: 600px;
+  margin-bottom: 52px;
+}
+
+.sec-sub--light {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: var(--white);
+  padding: 13px 30px;
+  border-radius: 9px;
+  font-size: 14.5px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--teal-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-teal);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  padding: 13px 30px;
+  border-radius: 9px;
+  font-size: 14.5px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--teal);
+  color: var(--teal-light);
+  background: rgba(27, 143, 166, 0.1);
+}
+
+/* ── Page hero banner ── */
+.page-hero {
+  background: var(--navy);
+  padding: 76px 4rem;
+}
+
+/* ── Page wrapper ── */
+.page-wrapper {
+  padding-top: var(--nav-height);
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--teal);
+  color: var(--white);
+  padding: 13px 22px;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 3000;
+  animation: fadeUp 0.3s ease;
+  box-shadow: var(--shadow-teal);
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-box {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 38px;
+  max-width: 580px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--off-white);
+  border: none;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal-close:hover { background: var(--light-gray); }
+
+.m-tag {
+  display: inline-block;
+  background: rgba(27, 143, 166, 0.1);
+  color: var(--teal);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  section { padding: 72px 2.5rem; }
+  .page-hero { padding: 72px 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 60px 1.5rem; }
+  .page-hero { padding: 60px 1.5rem; }
+}

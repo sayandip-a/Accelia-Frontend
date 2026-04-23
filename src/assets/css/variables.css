@@ -1,0 +1,38 @@
+/* ================================================
+   Accelia Clinical Solutions — Design Tokens
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Brand Colors */
+  --navy:         #0B1F3A;
+  --navy-dark:    #071429;
+  --navy-deeper:  #050F1F;
+  --teal:         #1B8FA6;
+  --teal-light:   #26B5CF;
+  --teal-dark:    #0E6B7E;
+  --white:        #FFFFFF;
+  --off-white:    #F2F7FA;
+  --gray:         #5E6E82;
+  --light-gray:   #D8E4ED;
+  --gold:         #C8A84B;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-pad:  96px 4rem;
+  --nav-height:   76px;
+
+  /* Radii */
+  --radius-sm:    8px;
+  --radius-md:    14px;
+  --radius-lg:    18px;
+  --radius-full:  100px;
+
+  /* Shadows */
+  --shadow-card:  0 16px 48px rgba(11, 31, 58, 0.10);
+  --shadow-teal:  0 8px 24px rgba(27, 143, 166, 0.35);
+}

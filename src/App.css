@@ -36,3 +36,71 @@
     transform: rotate(360deg);
   }
 }
+/* ── Admin Button (desktop) ── */
+.nav__admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(38, 181, 207, 0.45);
+  background: rgba(38, 181, 207, 0.08);
+  color: #26b5cf;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.nav__admin-btn:hover {
+  background: rgba(38, 181, 207, 0.16);
+  border-color: rgba(38, 181, 207, 0.75);
+  transform: translateY(-1px);
+}
+
+.nav__admin-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Shared icon wrapper ── */
+.nav__admin-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: rgba(38, 181, 207, 0.18);
+  flex-shrink: 0;
+}
+
+/* ── Admin Button (mobile drawer) ── */
+.nav__mobile-admin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(38, 181, 207, 0.35);
+  background: rgba(38, 181, 207, 0.07);
+  color: #26b5cf;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  margin-top: 4px;
+}
+
+.nav__mobile-admin:hover {
+  background: rgba(38, 181, 207, 0.14);
+  border-color: rgba(38, 181, 207, 0.6);
+}

@@ -14,6 +14,9 @@ const NAV_LINKS = [
   { label: "Locations", path: "/locations" },
 ];
 
+// ✅ Point this to wherever your admin React app is deployed
+const ADMIN_URL = "https://accelia-three.vercel.app/login";
+
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -27,8 +30,9 @@ export default function Nav() {
     window.scrollTo(0, 0);
   };
 
+  // ✅ Fixed: now opens the admin FRONTEND, not the backend
   const handleAdminLogin = () => {
-    window.location.href = "https://accelia-yrjp.onrender.com/login";
+    window.open(ADMIN_URL, "_blank", "noopener,noreferrer");
     setMobileOpen(false);
   };
 

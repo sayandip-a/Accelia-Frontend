@@ -15,7 +15,7 @@ const NAV_LINKS = [
 ];
 
 // ✅ Point this to wherever your admin React app is deployed
-const ADMIN_URL = "https://accelia-three.vercel.app/login";
+const ADMIN_URL = "https://accelia-admin.vercel.app/login";
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);

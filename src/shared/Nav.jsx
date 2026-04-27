@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { label: "Locations", path: "/locations" },
 ];
 
-// ✅ Point this to wherever your admin React app is deployed
 const ADMIN_URL = "https://accelia-admin.vercel.app/login";
 
 export default function Nav() {
@@ -30,7 +29,6 @@ export default function Nav() {
     window.scrollTo(0, 0);
   };
 
-  // ✅ Fixed: now opens the admin FRONTEND, not the backend
   const handleAdminLogin = () => {
     window.open(ADMIN_URL, "_blank", "noopener,noreferrer");
     setMobileOpen(false);
@@ -38,11 +36,102 @@ export default function Nav() {
 
   return (
     <>
+      <style>{`
+        .admin-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 8px 16px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #0B1F3A 0%, #1a3a5c 100%);
+          border: 1px solid rgba(38,181,207,0.35);
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          font-family: inherit;
+          letter-spacing: 0.02em;
+          transition: all 0.22s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .admin-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(38,181,207,0.15), transparent);
+          opacity: 0;
+          transition: opacity 0.22s;
+        }
+        .admin-btn:hover::before { opacity: 1; }
+        .admin-btn:hover {
+          border-color: rgba(38,181,207,0.7);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 16px rgba(38,181,207,0.25);
+        }
+        .admin-btn:active { transform: translateY(0); }
+        .admin-btn__icon {
+          width: 22px;
+          height: 22px;
+          border-radius: 6px;
+          background: linear-gradient(135deg, #26B5CF, #0B8FAA);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .admin-btn__dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #26B5CF;
+          flex-shrink: 0;
+          animation: adminPulse 2s ease-in-out infinite;
+        }
+        @keyframes adminPulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(38,181,207,0.5); }
+          50% { opacity: 0.6; box-shadow: 0 0 0 5px rgba(38,181,207,0); }
+        }
+        .admin-btn-mobile {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          padding: 13px 16px;
+          border-radius: 12px;
+          background: linear-gradient(135deg, #0B1F3A, #1a3a5c);
+          border: 1px solid rgba(38,181,207,0.3);
+          color: #fff;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          font-family: inherit;
+          margin-top: 10px;
+          transition: all 0.2s;
+          text-align: left;
+        }
+        .admin-btn-mobile:hover {
+          border-color: rgba(38,181,207,0.6);
+          box-shadow: 0 4px 16px rgba(38,181,207,0.2);
+        }
+        .admin-btn-mobile__icon {
+          width: 36px;
+          height: 36px;
+          border-radius: 9px;
+          background: linear-gradient(135deg, #26B5CF, #0B8FAA);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 12px rgba(38,181,207,0.3);
+        }
+      `}</style>
+
       <nav className="nav">
         {/* Logo */}
         <div className="logo">
           <Link to="/" onClick={closeMenu}>
-            <img src={logo} alt="Aceliea logo" />
+            <img src={logo} alt="Accelia logo" />
           </Link>
         </div>
 
@@ -57,6 +146,7 @@ export default function Nav() {
               {label}
             </button>
           ))}
+
           <button
             className="nav__link nav__cta"
             onClick={() => handleNav("/contact")}
@@ -64,19 +154,23 @@ export default function Nav() {
             Contact Us
           </button>
 
-          {/* Admin Sign In Button */}
-          <button className="nav__link nav__signin" onClick={handleAdminLogin}>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              width="14"
-              height="14"
-            >
-              <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" />
-            </svg>
-            Sign In
+          {/* ── Admin Portal Button ── */}
+          <button className="admin-btn" onClick={handleAdminLogin}>
+            {/* Icon */}
+            <span className="admin-btn__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2.5"
+                style={{ width: 12, height: 12 }}
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </span>
+            Admin Portal
+            {/* Live dot */}
+            <span className="admin-btn__dot" />
           </button>
         </div>
 
@@ -104,6 +198,7 @@ export default function Nav() {
               {label}
             </button>
           ))}
+
           <button
             className="nav__mobile-item"
             onClick={() => handleNav("/contact")}
@@ -112,12 +207,50 @@ export default function Nav() {
             Contact Us
           </button>
 
-          <button
-            className="nav__mobile-item"
-            onClick={handleAdminLogin}
-            style={{ color: "#26B5CF", fontWeight: 600 }}
-          >
-            Sign In
+          {/* ── Mobile Admin Portal Button ── */}
+          <button className="admin-btn-mobile" onClick={handleAdminLogin}>
+            <span className="admin-btn-mobile__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2.5"
+                style={{ width: 16, height: 16 }}
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </span>
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: "#fff",
+                  lineHeight: 1.3,
+                }}
+              >
+                Admin Portal
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "rgba(38,181,207,0.85)",
+                  marginTop: 2,
+                }}
+              >
+                Secure management access
+              </div>
+            </div>
+            <span
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                background: "#26B5CF",
+                flexShrink: 0,
+                animation: "adminPulse 2s infinite",
+              }}
+            />
           </button>
         </div>
       )}

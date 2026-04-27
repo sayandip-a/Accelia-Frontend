@@ -1,6 +1,3 @@
-// =====================================================
-// Careers.jsx — Careers Page (Backend Connected)
-// =====================================================
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "../shared/Nav";
@@ -9,7 +6,7 @@ import "../assets/css/variables.css";
 import "../assets/css/global.css";
 import "../assets/css/pages.css";
 
-const API_URL = "https://accelia-yrjp.onrender.com/api/jobs";
+const API_URL = "https://accelia-backend.onrender.com/api/jobs";
 
 const DEPARTMENTS = [
   {
